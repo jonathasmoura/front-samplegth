@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from 'src/app/shared/usuario.service';
 
 @Component({
   selector: 'app-registrar',
   templateUrl: './registrar.component.html',
-  styles: [
-  ]
+  styles: [],
 })
-export class RegistrarComponent {
-
+export class RegistrarComponent implements OnInit {
+  constructor(public service: UsuarioService) {}
+  ngOnInit(): void {}
 }

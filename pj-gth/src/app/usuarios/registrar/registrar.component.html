@@ -1,1 +1,68 @@
-<p>registrar works!</p>
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="row" style="height: 450px;">
+            <div class="col-md-12 my-auto side-header">
+                <div class="col-md-12 my-auto side-header">
+                    <img src="/assets/images/icons8-add-user-64.png" class="mx-auto d-block">
+                    <h1>Registrar Usuário</h1>
+                    <p><em>Projeto Piloto BackEnd e FrontEnd</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <form [formGroup]="service.formModel" autocomplete="off">
+            <div class="form-group required">
+                <label>Nome</label>
+                <input class="form-control" formControlName = "Nome">
+                <label  class="text-danger" *ngIf="service.formModel.get('Nome')?.touched && service.formModel.get('Nome')?.errors">Este campo é obrigatório.</label>
+            </div>
+            <div class="form-group required">
+                <label>Sobrenome</label>
+                <input class="form-control" formControlName = "SobreNome">
+                <label  class="text-danger" *ngIf="service.formModel.get('SobreNome')?.touched && service.formModel.get('SobreNome')?.errors">Este campo é obrigatório.</label>
+            </div>
+            <div class="form-group required">
+                <label>CPF/CNPJ</label>
+                <input class="form-control" formControlName = "CPFCNPJ">
+                <label  class="text-danger" *ngIf="service.formModel.get('CPFCNPJ')?.touched && service.formModel.get('CPFCNPJ')?.errors">Este campo é obrigatório.</label>
+            </div>
+            <div class="form-group required">
+                <label>Email</label>
+                <input class="form-control" formControlName = "Email">
+                <label  class="text-danger" *ngIf="service.formModel.get('Email')?.touched && service.formModel.get('Email')?.errors">Este campo é obrigatório.</label>
+            </div>
+            <div class="form-group required">
+                <label>Endereco</label>
+                <input class="form-control" formControlName = "Endereco">
+                <label  class="text-danger" *ngIf="service.formModel.get('Endereco')?.touched && service.formModel.get('Endereco')?.errors">Este campo é obrigatório.</label>
+            </div>
+            <div formGroupName="Senhas">
+                <div class="form-group required">
+                    <label>Senha</label>
+                    <input class="form-control" formControlName = "Senha">
+                    <label  class="text-danger" *ngIf="service.formModel.get('Senha')?.touched && service.formModel.get('Senha')?.errors">Este campo é obrigatório.</label>
+                    <label  class="text-danger" *ngIf="service.formModel.get('Senha')?.touched && service.formModel.get('Senha')?.errors && service.formModel.get('Senha')?.hasError('minLength')">Mínimo 4 caracteres.</label>
+                </div>
+                <div class="form-group required">
+                    <label>Confirmar senha</label>
+                    <input class="form-control" formControlName = "ConfirmarSenha">
+                    <label  class="text-danger" *ngIf="service.formModel.get('ConfirmarSenha')?.touched && service.formModel.get('ConfirmarSenha')?.errors">Este campo é obrigatório.</label>
+                </div>
+            </div>
+            <br>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckAdmin">
+                <label class="form-check-label" for="flexCheckAdmin">
+                    Administrador
+                </label>
+            </div>
+            <br><br>
+            <div class="form-row">
+                <div class="form-group col-md-8 offset-md-2">
+                    <button type="submit" class="btn btn-lg btn-dark">Registrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
