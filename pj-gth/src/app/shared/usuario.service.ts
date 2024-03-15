@@ -1,22 +1,33 @@
-import { Injectable } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-
+import { Injectable, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { UsuarioModel } from './models/usuario-model.model';
 @Injectable({
   providedIn: 'root',
 })
-export class UsuarioService {
-  constructor(private fb: FormBuilder) {}
+export class UsuarioService implements OnInit {
+  constructor(private fb: FormBuilder, private httpClient: HttpClient) {}
 
-  formModel = this.fb.group({
-    Nome: ['', Validators.required],
-    SobreNome: ['', Validators.required],
-    Email: ['', Validators.required],
-    CPFCNPJ: ['', Validators.required],
-    Endereco: ['', Validators.required],
-    Senhas: this.fb.group({
-      Senha: ['', [Validators.required, Validators.minLength(4)]],
-      ConfirmarSenha: ['', Validators.required],
-    }),
-    Admin: [''],
-  });
+  ngOnInit(): void {}
+
+  readonly BaseURI = 'https://localhost:7225/api/usuarios/';
+
+  registrarUsuario(usuario: UsuarioModel): Observable<any> {
+    debugger;
+    const httpOpt = {
+      headers: new HttpHeaders({ 'content-type': 'application/json' }),
+    };
+    const body = JSON.stringify(usuario);
+    return this.httpClient.post(
+      this.BaseURI + 'registrarusuario',
+      body,
+      httpOpt
+    );
+  }
 }

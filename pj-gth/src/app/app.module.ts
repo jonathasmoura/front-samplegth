@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { UsuarioComponent } from './usuarios/usuario/usuario.component';
 import { RegistrarComponent } from './usuarios/registrar/registrar.component';
 import { UsuarioService } from './shared/usuario.service';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { UsuarioService } from './shared/usuario.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]
