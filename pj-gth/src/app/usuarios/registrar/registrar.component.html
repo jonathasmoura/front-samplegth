@@ -1,68 +1,72 @@
-<div class="row mt-4">
-    <div class="col-md-6">
-        <div class="row" style="height: 450px;">
-            <div class="col-md-12 my-auto side-header">
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="row" style="height: 450px;">
                 <div class="col-md-12 my-auto side-header">
-                    <img src="/assets/images/icons8-add-user-64.png" class="mx-auto d-block">
-                    <h1>Registrar Usuário</h1>
-                    <p><em>Projeto Piloto BackEnd e FrontEnd</em></p>
+                    <div class="col-md-12 my-auto side-header">
+                        <img src="/assets/images/icons8-add-user-64.png" class="mx-auto d-block">
+                        <h1>Registrar Usuário</h1>
+                        <p><em><strong>Projeto Piloto BackEnd</strong> e <strong>FrontEnd</strong></em></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <form [formGroup]="service.formModel" autocomplete="off">
-            <div class="form-group required">
-                <label>Nome</label>
-                <input class="form-control" formControlName = "Nome">
-                <label  class="text-danger" *ngIf="service.formModel.get('Nome')?.touched && service.formModel.get('Nome')?.errors">Este campo é obrigatório.</label>
-            </div>
-            <div class="form-group required">
-                <label>Sobrenome</label>
-                <input class="form-control" formControlName = "SobreNome">
-                <label  class="text-danger" *ngIf="service.formModel.get('SobreNome')?.touched && service.formModel.get('SobreNome')?.errors">Este campo é obrigatório.</label>
-            </div>
-            <div class="form-group required">
-                <label>CPF/CNPJ</label>
-                <input class="form-control" formControlName = "CPFCNPJ">
-                <label  class="text-danger" *ngIf="service.formModel.get('CPFCNPJ')?.touched && service.formModel.get('CPFCNPJ')?.errors">Este campo é obrigatório.</label>
-            </div>
-            <div class="form-group required">
-                <label>Email</label>
-                <input class="form-control" formControlName = "Email">
-                <label  class="text-danger" *ngIf="service.formModel.get('Email')?.touched && service.formModel.get('Email')?.errors">Este campo é obrigatório.</label>
-            </div>
-            <div class="form-group required">
-                <label>Endereco</label>
-                <input class="form-control" formControlName = "Endereco">
-                <label  class="text-danger" *ngIf="service.formModel.get('Endereco')?.touched && service.formModel.get('Endereco')?.errors">Este campo é obrigatório.</label>
-            </div>
-            <div formGroupName="Senhas">
+        <div class="col-md-6">
+            <form [formGroup]="formIncludeRegister" autocomplete="off" (ngSubmit) = "registrar()">
                 <div class="form-group required">
-                    <label>Senha</label>
-                    <input class="form-control" formControlName = "Senha">
-                    <label  class="text-danger" *ngIf="service.formModel.get('Senha')?.touched && service.formModel.get('Senha')?.errors">Este campo é obrigatório.</label>
-                    <label  class="text-danger" *ngIf="service.formModel.get('Senha')?.touched && service.formModel.get('Senha')?.errors && service.formModel.get('Senha')?.hasError('minLength')">Mínimo 4 caracteres.</label>
+                    <label>Nome</label>
+                    <input type="text" class="form-control" formControlName = "nome">
+                    <label  class="text-danger" *ngIf="formIncludeRegister.get('nome')?.touched && formIncludeRegister.get('nome')?.errors">Este campo é obrigatório.</label>
                 </div>
                 <div class="form-group required">
-                    <label>Confirmar senha</label>
-                    <input class="form-control" formControlName = "ConfirmarSenha">
-                    <label  class="text-danger" *ngIf="service.formModel.get('ConfirmarSenha')?.touched && service.formModel.get('ConfirmarSenha')?.errors">Este campo é obrigatório.</label>
+                    <label>Sobrenome</label>
+                    <input type="text" class="form-control" formControlName = "sobreNome">
+                    <label  class="text-danger" *ngIf="formIncludeRegister.get('sobreNome')?.touched && formIncludeRegister.get('sobreNome')?.errors">Este campo é obrigatório.</label>
                 </div>
-            </div>
-            <br>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckAdmin">
-                <label class="form-check-label" for="flexCheckAdmin">
-                    Administrador
-                </label>
-            </div>
-            <br><br>
-            <div class="form-row">
-                <div class="form-group col-md-8 offset-md-2">
-                    <button type="submit" class="btn btn-lg btn-dark">Registrar</button>
+                <div class="form-group required">
+                    <label>CPF/CNPJ</label>
+                    <input type="text" class="form-control" formControlName = "cpfcnpj">
+                    <label  class="text-danger" *ngIf="formIncludeRegister.get('cpfcnpj')?.touched && formIncludeRegister.get('cpfcnpj')?.errors">Este campo é obrigatório.</label>
                 </div>
-            </div>
-        </form>
+                <div class="form-group required">
+                    <label>Email</label>
+                    <input type="email" class="form-control" formControlName = "email">
+                    <label  class="text-danger" *ngIf="formIncludeRegister.get('email')?.touched && formIncludeRegister.get('email')?.errors">Este campo é obrigatório.</label>
+                </div>
+                <div class="form-group required">
+                    <label>Endereco</label>
+                    <input type="text" class="form-control" formControlName = "endereco">
+                    <label  class="text-danger" *ngIf="formIncludeRegister.get('endereco')?.touched && formIncludeRegister.get('endereco')?.errors">Este campo é obrigatório.</label>
+                </div>
+                
+                    <div class="form-group required">
+                        <label>Senha</label>
+                        <input type = "password" class="form-control" formControlName = "senha">
+                        <label  class="text-danger" *ngIf="formIncludeRegister.get('senha')?.touched && formIncludeRegister.get('senha')?.errors">Este campo é obrigatório.</label>
+                        <label  class="text-danger" *ngIf="formIncludeRegister.get('senha')?.touched && formIncludeRegister.get('senha')?.errors && formIncludeRegister.get('senha')?.hasError('minLength')">Mínimo 4 caracteres.</label>
+                    </div>
+                    <div class="form-group required">
+                        <label>Confirmar senha</label>
+                        <input type = "password" class="form-control" formControlName = "confirmaSenha">
+                        <label  class="text-danger" *ngIf="formIncludeRegister.get('confirmaSenha')?.touched && formIncludeRegister.get('confirmaSenha')?.errors">Este campo é obrigatório.</label>
+                    </div>                
+                <br>
+                <div class="form-group form-check">
+                    <input class="form-check-input" type="checkbox" formControlName = "admin">
+                    <label class="form-check-label">
+                        Administrador
+                    </label>
+                </div>
+                <br><br>
+                <div class="form-row">
+                    <div class="form-group col-md-8 offset-md-2">
+                        <button type="submit" class="btn btn-lg btn-dark" [disabled]="!formIncludeRegister.valid" >Registrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
+    
 </div>
+
+
