@@ -7,7 +7,7 @@ export class UsuarioModel {
   Endereco: string;
   Senha: string;
   ConfirmaSenha: string;
-  Admin: boolean;
+  Admin :boolean;
 
   constructor(
     Nome: string,
@@ -17,7 +17,7 @@ export class UsuarioModel {
     Endereco: string,
     Senha: string,
     ConfirmaSenha: string,
-    Admin: boolean
+    Admin = false
   ) {
     this.Nome = Nome;
     this.SobreNome = SobreNome;

@@ -49,7 +49,7 @@ export class RegistrarComponent {
       endereco: ['', Validators.required],
       senha: ['', Validators.required],
       confirmaSenha: ['', Validators.required],
-      admin: [''],
+      admin: [false, ''],
     });
   }
 
@@ -63,8 +63,13 @@ export class RegistrarComponent {
         .subscribe((res) => {
           if (res.status == 'success') {
             console.log(res.toString());
+            this.resetForm();
           }
         });
     }
+  }
+
+  resetForm() {
+    this.formIncludeRegister.reset();
   }
 }
