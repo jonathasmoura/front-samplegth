@@ -21,7 +21,7 @@ export class UsuarioService implements OnInit {
   registrarUsuario(usuario: UsuarioModel): Observable<any> {
     debugger;
     const httpOpt = {
-      headers: new HttpHeaders({ 'content-type': 'application/json' }),
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
     const body = JSON.stringify(usuario);
     return this.httpClient.post(
@@ -29,5 +29,5 @@ export class UsuarioService implements OnInit {
       body,
       httpOpt
     );
-  }
+  } 
 }
