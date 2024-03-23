@@ -9,13 +9,15 @@ import { RegistrarComponent } from './usuarios/registrar/registrar.component';
 import { UsuarioService } from './shared/usuario.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TodosUsuariosComponent } from './usuarios/todos-usuarios/todos-usuarios.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuarioComponent,
-    RegistrarComponent
+    RegistrarComponent,
+    TodosUsuariosComponent
   ],
   imports: [
     BrowserModule,
