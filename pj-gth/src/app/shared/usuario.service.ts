@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { UsuarioModel } from './models/usuario-model.model';
 @Injectable({
   providedIn: 'root',
@@ -29,5 +29,31 @@ export class UsuarioService implements OnInit {
       body,
       httpOpt
     );
-  } 
+  }
+
+  todosUsuarios(): Observable<any> {
+    return this.httpClient
+      .get(this.BaseURI + 'todosusuarios')
+      .pipe(catchError(this.errorHandler));
+  }
+
+  delete(id:number){
+    const httpOpt = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+    return this.httpClient.delete(this.BaseURI + '/posts/' + id, httpOpt)  
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  errorHandler(error: any) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = error.error.message;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
+  }
 }
