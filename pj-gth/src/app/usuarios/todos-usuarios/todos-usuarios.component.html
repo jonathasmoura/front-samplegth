@@ -1,7 +1,7 @@
 <div class="container">
     <h1>Lista de Usuários</h1>
     
-    <a href="#" routerLink="/registrarusuario/registrarusuario/" class="btn btn-success">Criar Novo Usuário</a>
+    <a href="#" routerLink="registrar" class="btn btn-success">Criar Novo Usuário</a>
       
     <table class="table table-striped">
         <thead>
@@ -22,7 +22,7 @@
                 <td>{{ usuario.sobrenome }}</td>
                 <td>{{ usuario.cpfcnpj }}</td>
                 <td>{{ usuario.email}}</td>
-                <td>{{ usuario.administrador ? 'SIM' : 'Não'}}</td>
+                <td>{{ usuario.administrador ? 'SIM' : 'NÃO'}}</td>
                 <td>
                   <a href="#" [routerLink]="['/usuarios/', usuario.id, 'view']" class="btn btn-info">Visualizar</a>
                   <a href="#" [routerLink]="['/usuarios/', usuario.id, 'edit']" class="btn btn-primary">Editar</a>

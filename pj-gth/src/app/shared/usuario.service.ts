@@ -8,6 +8,7 @@ import {
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { UsuarioModel } from './models/usuario-model.model';
+import { JsonPipe } from '@angular/common';
 @Injectable({
   providedIn: 'root',
 })
@@ -37,14 +38,33 @@ export class UsuarioService implements OnInit {
       .pipe(catchError(this.errorHandler));
   }
 
-  delete(id:number){
+  usuarioPorId(id: number): Observable<any> {
+    return this.httpClient
+      .get(this.BaseURI + 'obterusuario/' + id)
+      .pipe(catchError(this.errorHandler));
+  }
+
+  editarUsuario(id: number, usuario: UsuarioModel): Observable<any> {
     const httpOpt = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
-    return this.httpClient.delete(this.BaseURI + '/posts/' + id, httpOpt)  
-    .pipe(
-      catchError(this.errorHandler)
-    )
+
+    return this.httpClient
+      .put(
+        this.BaseURI + 'editardadosusuario' + id,
+        JSON.stringify(usuario),
+        httpOpt
+      )
+      .pipe(catchError(this.errorHandler));
+  }
+
+  delete(id: number) {
+    const httpOpt = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+    return this.httpClient
+      .delete(this.BaseURI + '/posts/' + id, httpOpt)
+      .pipe(catchError(this.errorHandler));
   }
 
   errorHandler(error: any) {
