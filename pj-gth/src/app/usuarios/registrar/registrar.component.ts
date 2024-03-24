@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/shared/usuario.service';
 
 @Component({
@@ -24,7 +25,11 @@ export class RegistrarComponent {
     admin: new FormControl(false),
   });
 
-  constructor(public service: UsuarioService, private fb: FormBuilder) {}
+  constructor(
+    public service: UsuarioService,
+    private fb: FormBuilder,
+    private rota: Router
+  ) {}
 
   ngOnInit(): void {
     this.formIncludeRegister = this.fb.group({
@@ -64,6 +69,7 @@ export class RegistrarComponent {
           if (res.status == 'success') {
             console.log(res.toString());
             this.resetForm();
+            this.rota.navigateByUrl('usuarios/todosusuarios');
           }
         });
     }
